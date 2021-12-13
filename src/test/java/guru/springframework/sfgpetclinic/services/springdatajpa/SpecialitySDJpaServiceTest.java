@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class SpecialitySDJpaServiceTest {
@@ -22,6 +24,9 @@ class SpecialitySDJpaServiceTest {
     @Test
     void deleteById() {
         service.deleteById(1l);
+        service.deleteById(1l);
+
+        verify(specialtyRepository, times(2)).deleteById(1l);
     }
 
     @Test
